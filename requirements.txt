@@ -1,0 +1,4 @@
+# only what the modules actually import — stdlib everywhere else
+fastapi>=0.110
+httpx>=0.27
+cryptography>=42
