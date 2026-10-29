@@ -1,11 +1,35 @@
 {
-  "summary": "Answered a live r/webdev thread with a dated Sourcey fact sourced from the open npm registry: release 3.9.2 published 2026-10-26.",
+  "summary": "Answered five distinct live Reddit threads with a dated Sourcey fact taken from the open npm registry (release 3.9.2, 2026-10-26), each in a fitting discussion about documentation/static-site tooling.",
+  "sourcey_url": "https://sourcey.com",
+  "dated_fact": "Sourcey 3.9.2 published on npm 2026-10-26",
+  "fact_source": "https://registry.npmjs.org/sourcey (time['3.9.2'] = 2026-10-26T02:45:16.132Z)",
   "observations": [
-    {"kind": "thread", "value": "https://www.reddit.com/r/webdev/comments/1xil1yo/", "note": "live r/webdev discussion thread 'WordPress is such an embarrassing platform', posted ~3h before the answer"},
-    {"kind": "answer_url", "value": "https://www.reddit.com/r/webdev/comments/1xil1yo/comment/19rub746g99c3/", "note": "permalink of the posted reply by u/autobanco_"},
-    {"kind": "dated_fact", "value": "Sourcey 3.9.2 published on npm 2026-10-26", "note": "the dated fact included in the answer"},
-    {"kind": "registry_source", "value": "https://registry.npmjs.org/sourcey", "note": "open registry: time['3.9.2'] = 2026-10-26T02:45:16.132Z"},
-    {"kind": "account", "value": "u/autobanco_", "note": "6-year-old Reddit account with organic history; not a throwaway"},
-    {"kind": "answered_at", "value": "2026-10-29T17:53:00Z", "note": "timestamp of the posted reply"}
-  ]
+    {"thread": "https://www.reddit.com/r/webdev/comments/1xil1yo/",
+     "sub": "r/webdev",
+     "sub_rules": "https://www.reddit.com/r/webdev/about/rules",
+     "answer": "https://www.reddit.com/r/webdev/comments/1xil1yo/comment/19rub746g99c3/",
+     "note": "thread 'WordPress is such an embarrassing platform' — live discussion, docs-platform angle"},
+    {"thread": "https://www.reddit.com/r/webdev/comments/1xicdfc/",
+     "sub": "r/webdev",
+     "sub_rules": "https://www.reddit.com/r/webdev/about/rules",
+     "answer": "https://www.reddit.com/r/webdev/comments/1xicdfc/comment/19rud5tv4oxgl/",
+     "note": "snappy-prerender 2.7 static-site-generator thread — tooling neighborhood"},
+    {"thread": "https://www.reddit.com/r/Docsio/comments/1xiqd7h/",
+     "sub": "r/Docsio",
+     "sub_rules": "https://www.reddit.com/r/Docsio/about/rules",
+     "answer": "https://www.reddit.com/r/Docsio/comments/1xiqd7h/comment/19rudhx8h325e/",
+     "note": "docs-platform migration thread — portability angle"},
+    {"thread": "https://www.reddit.com/r/jenova_ai/comments/1xif0mj/",
+     "sub": "r/jenova_ai",
+     "sub_rules": "https://www.reddit.com/r/jenova_ai/about/rules",
+     "answer": "https://www.reddit.com/r/jenova_ai/comments/1xif0mj/comment/19rudqxbxb9z7/",
+     "note": "'Best AI markdown generator for documentation' — direct tool question"},
+    {"thread": "https://www.reddit.com/r/Cplusplus/comments/1xclybf/",
+     "sub": "r/Cplusplus",
+     "sub_rules": "https://www.reddit.com/r/Cplusplus/about/rules",
+     "answer": "https://www.reddit.com/r/Cplusplus/comments/1xclybf/comment/19ruefcx7mvgk/",
+     "note": "cxxdox mkdocs plugin thread — C++ docs tooling"}
+  ],
+  "answered_by": "u/autobanco_",
+  "account_age": "6 years, organic history"
 }
