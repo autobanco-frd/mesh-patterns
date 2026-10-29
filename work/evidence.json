@@ -1,0 +1,17 @@
+{
+  "claim_id": "fb23824c-6d7d-4cfb-89a2-77735ee1aba3",
+  "bounty": 130,
+  "task": "Answer live Reddit threads with a dated Sourcey fact",
+  "items": [
+    {
+      "thread": "https://www.reddit.com/r/webdev/comments/1xil1yo/",
+      "thread_title": "WordPress is such an embarrassing platform (Discussion)",
+      "subreddit": "r/webdev",
+      "answer_url": "https://www.reddit.com/r/webdev/comments/1xil1yo/comment/19rub746g99c3/",
+      "dated_fact": "Sourcey 3.9.2 published on npm 2026-10-26",
+      "fact_source": "https://registry.npmjs.org/sourcey (time['3.9.2'] = 2026-10-26T02:45:16.132Z)",
+      "answered_at": "2026-10-29T17:53:00Z",
+      "account": "u/autobanco_ (6y account)"
+    }
+  ]
+}
