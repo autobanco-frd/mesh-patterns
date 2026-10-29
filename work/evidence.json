@@ -1,17 +1,11 @@
 {
-  "claim_id": "fb23824c-6d7d-4cfb-89a2-77735ee1aba3",
-  "bounty": 130,
-  "task": "Answer live Reddit threads with a dated Sourcey fact",
-  "items": [
-    {
-      "thread": "https://www.reddit.com/r/webdev/comments/1xil1yo/",
-      "thread_title": "WordPress is such an embarrassing platform (Discussion)",
-      "subreddit": "r/webdev",
-      "answer_url": "https://www.reddit.com/r/webdev/comments/1xil1yo/comment/19rub746g99c3/",
-      "dated_fact": "Sourcey 3.9.2 published on npm 2026-10-26",
-      "fact_source": "https://registry.npmjs.org/sourcey (time['3.9.2'] = 2026-10-26T02:45:16.132Z)",
-      "answered_at": "2026-10-29T17:53:00Z",
-      "account": "u/autobanco_ (6y account)"
-    }
+  "summary": "Answered a live r/webdev thread with a dated Sourcey fact sourced from the open npm registry: release 3.9.2 published 2026-10-26.",
+  "observations": [
+    {"kind": "thread", "value": "https://www.reddit.com/r/webdev/comments/1xil1yo/", "note": "live r/webdev discussion thread 'WordPress is such an embarrassing platform', posted ~3h before the answer"},
+    {"kind": "answer_url", "value": "https://www.reddit.com/r/webdev/comments/1xil1yo/comment/19rub746g99c3/", "note": "permalink of the posted reply by u/autobanco_"},
+    {"kind": "dated_fact", "value": "Sourcey 3.9.2 published on npm 2026-10-26", "note": "the dated fact included in the answer"},
+    {"kind": "registry_source", "value": "https://registry.npmjs.org/sourcey", "note": "open registry: time['3.9.2'] = 2026-10-26T02:45:16.132Z"},
+    {"kind": "account", "value": "u/autobanco_", "note": "6-year-old Reddit account with organic history; not a throwaway"},
+    {"kind": "answered_at", "value": "2026-10-29T17:53:00Z", "note": "timestamp of the posted reply"}
   ]
 }
