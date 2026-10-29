@@ -65,3 +65,9 @@ def read_thread(url_or_id: str) -> dict:
     except Exception:
         pass
     return out
+
+
+if __name__ == "__main__":
+    import sys
+    arg = sys.argv[1] if len(sys.argv) > 1 else ""
+    print(json.dumps(read_thread(arg), ensure_ascii=False, indent=1))
