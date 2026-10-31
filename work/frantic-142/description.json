@@ -1,15 +1,15 @@
 {
   "@context": "https://mailschema.org/contexts/map-0.3.jsonld",
   "@type": "MailAction",
-  "@id": "urn:uuid:1f786354-9941-5d98-b4c9-ac63b98b552a",
+  "@id": "urn:uuid:68a6946f-feb8-5ad1-829a-5ade96eb4e3a",
   "profile": "https://mailschema.org/profiles/map/0.3",
   "type": {
     "id": "https://mailschema.org/types/campaign-send-approval",
     "version": "0.1",
     "contractDigest": "sha-256:de3c88a0712adb1d0c6e82f437b825c83520d8e1c44c7b032a2cfcfe5ce55731"
   },
-  "issuedAt": "2026-10-30T21:26:48Z",
-  "expiresAt": "2026-10-30T22:15:00Z",
+  "issuedAt": "2026-10-31T08:01:06Z",
+  "expiresAt": "2026-10-31T14:00:00Z",
   "inLanguage": "en",
   "service": {
     "id": "https://api.nitrosend.com",
@@ -17,24 +17,24 @@
   },
   "recipient": "info@mesh-01.com",
   "subject": {
-    "id": "https://api.nitrosend.com/v1/my/campaigns/15696",
-    "title": "mesh-01 Approval Loop Check"
+    "id": "https://api.nitrosend.com/v1/my/campaigns/15741",
+    "title": "mesh-01 Approval Loop Check v3"
   },
   "terms": {
-    "id": "https://api.nitrosend.com/v1/my/map/approvals/563",
-    "version": "sha-256:7abeea6cf4ceda9f5c5f3058311f5ded94a2930940593dbc2bed34035451f517"
+    "id": "https://api.nitrosend.com/v1/my/map/approvals/594",
+    "version": "sha-256:4db711fe0dd7b1afe25a4ac6bc739b9d9e4da3b24b5449d9334b766646b4693f"
   },
   "human": {
-    "url": "https://app.nitrosend.com/approve/563?account_id=13832&brand_id=14024"
+    "url": "https://app.nitrosend.com/approve/594?account_id=13832&brand_id=14024"
   },
   "details": {
-    "summary": "mesh-01-bounty asked to send \"MAP approval loop test\" to 1 recipient.",
+    "summary": "mesh-01-bounty asked to send \"MAP approval loop test v3\" to 1 recipient.",
     "requester": "mesh-01-bounty",
     "content": {
-      "id": "https://api.nitrosend.com/v1/my/templates/25623",
+      "id": "https://api.nitrosend.com/v1/my/templates/25677",
       "revision": "2",
-      "digest": "sha-256:befd05985769a59fe8d18ddc4908588e75a6e60ff12de88e0fd49e363a68a630",
-      "title": "MAP approval loop test"
+      "digest": "sha-256:5e8b7952d54e43e559cb2b6fd7029f5786929ef3618c285661ee729804c2aa11",
+      "title": "MAP approval loop test v3"
     },
     "sender": {
       "mailbox": "hello@mesh01.nitrosend.net",
@@ -42,14 +42,14 @@
       "replyTo": "hello@mesh01.nitrosend.net"
     },
     "audience": {
-      "id": "urn:nitrosend:campaign-send:3529:audience",
+      "id": "urn:nitrosend:campaign-send:3568:audience",
       "revision": "d8c1579e9fa4c39a6d4a05657e4bb7557a38de7343576d50d60409d41b866eb4",
       "count": 1,
       "label": "1 contact list"
     },
     "schedule": {
       "mode": "scheduled",
-      "at": "2026-10-30T22:15:00Z"
+      "at": "2026-10-31T14:00:00Z"
     }
   },
   "operations": [
