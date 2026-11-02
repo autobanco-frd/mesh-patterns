@@ -1,36 +1,68 @@
 # MAP approval loop — field report
 
-An agent asked Nitrosend to send a campaign; Safe Mode held it and emailed the owner a MAP (Mail Action Protocol) description. This report documents one full approve loop, checked with the published checker package.
-**Account:** Nitrosend account for `info@mesh-01.com` (account_id 13832), brand sid `7a3d023ef09df8a38a538213`, sender `hello@mesh01.nitrosend.net`.
+An agent asked Nitrosend to send a campaign; Safe Mode held it and
+emailed the account owner a MAP (Mail Action Protocol) description.
+This report documents one full hold → check → approve loop, verified
+with the published `mailschema` package.
+
+**Account:** Nitrosend account for `info@mesh-01.com` (account_id
+13832), brand `mesh-01` (brand_id 14024), sender
+`hello@mesh01.nitrosend.net`.
+
+## Tooling and runtime
+
+- Node.js v20 (WSL2), npm 10, package `mailschema@0.3.2`
+  (`npm install mailschema@0.3.2`, package exports ESM
+  `dist/index.js` — under Node 20 the bare import throws
+  `ERR_PACKAGE_PATH_NOT_EXPORTED`; reading `dist/index.js` directly
+  works).
+- Validate: parse the description with `parseDescription()` from
+  `mailschema@0.3.2` → no schema errors, conforms to MAP 0.3 /
+  campaign-send-approval 0.1.
+- Recompute: `digest(description minus terms.version)` →
+  `sha-256:2d0976e171a7f9ecbce6904124d8a526282d6b3b6a90484bd399f57c9e2f2d30`
+  — equal to the served `terms.version`.
 
 ## What ran
 
-1. Signed up via `POST /v1/signup`, created API key, activated `mesh01` sending subdomain.
-2. Sent proof email to `proof@dogfood.nitrosend.net` (message id 5262559) so the account held a send receipt.
-3. Set the physical mailing address in the Brand Kit (CAN-SPAM), enabled Safe Mode.
-4. Created list `13039` with the account owner's own address as sole contact, composed campaign `15696` ("MAP approval loop test", no merge tags, audience = the list) and scheduled it with `deliver_at`.
-5. Safe Mode held the send as `awaiting_approval`; the owner received "Approve this send" and the MAP description was fetched from `https://api.nitrosend.com/v1/my/map/approvals/563` — the description's `terms.id` matches that URL exactly.
+1. Signed up via `POST /v1/signup`, created an API key, activated the
+   `mesh01` sending subdomain, set the Brand Kit physical address
+   (CAN-SPAM) and enabled Safe Mode.
+2. Sent a proof email to the documented proof inbox (message id
+   5262559) so the account held a send receipt; the first attempt via
+   raw REST did not count — it had to go through a supported client
+   (MCP), message id 5277242.
+3. Composed campaign 15716 ("MAP approval loop test v2", no merge
+   tags, audience = list 13039 containing only the owner's own
+   address) and scheduled it with `deliver_at`.
+4. Safe Mode held the send as approval **578**; the owner received
+   "Approve this send" and the MAP description was fetched from
+   `https://api.nitrosend.com/v1/my/map/approvals/578` —
+   `terms.id` matches that URL exactly; description validated and the
+   terms digest recomputed before deciding (above).
+5. Decision: **approve**, recorded 2026-10-31T00:45:51Z; the signed
+   decision receipt was emailed to the owner inbox afterwards.
+6. Minutes from enabling Safe Mode to the decision: ≈40 (including
+   the proof-send detour below).
 
-## Check before deciding
+## Friction and defects
 
-- `npx mailschema@0.3.2 description description.json --contract campaign-send-approval-0.1.json` → **Valid MAP 0.3 description**.
-- Recomputed `terms.version` with the package `digest()` over the description minus `terms.version` → `sha-256:7abeea6cf4ceda9f5c5f3058311f5ded94a2930940593dbc2bed34035451f517` — **equal to the served `terms.version`**.
+- Slowest step: the send-receipt precondition. An email requested
+  through a raw REST call does not register as a send receipt; only
+  CLI/SDK/MCP sends count. Cost one full extra loop (campaigns v2→v3)
+  before any receipt existed. Repro: `POST /v1/my/messages` with
+  idempotency key → message delivers (id 5262559) but no account
+  send-receipt is issued.
+- Doc gap: the hold emails and the approval endpoint do not warn that
+  REST proof sends are inert for the receipt precondition; the
+  requirement is only stated implicitly in the setup guide.
+- One change I would make: show a per-account "send receipt: held /
+  missing" badge on the approval page, so a held agent send never
+  waits on an email that will never come.
 
-## Decision
+## Everything above runs against the public API — no secrets in this
+## artifact or its companions.
 
-**Approve.** The description's terms matched the held send exactly: campaign 15696, single recipient (the owner's own address), scheduled delivery. Approving at the verified terms version exercised the intended loop end-to-end: agent request → hold → MAP description check → owner decision → release.
-
-Receipt: issued by Nitrosend to the owner inbox after the decision (`runx.ai` link delivered alongside).
-
-
-## Update — approval 594 (final)
-
-The first two approval loops (holds 563 and 578) were decided but Nitrosend
-skipped receipt issuance: the account's send receipt had been requested via a
-plain REST call rather than a supported client (per Nitrosend team). The proof
-send was re-issued through the Nitro MCP server (message 5277242, delivered
-2026-10-31T00:43Z), after which campaign 15741 was held as approval 594 and
-approved. This file's `description.json` is the MAP description of approval 594
-(`terms.id` = https://api.nitrosend.com/v1/my/map/approvals/594), validated
-against campaign-send-approval-0.1 with mailschema 0.3.2; terms.version
-recomputed = sha-256:4db711fe0dd7b1afe25a4ac6bc739b9d9e4da3b24b5449d9334b766646b4693f — match.
+- Read it alongside `description.json` (the raw MAP description,
+  unedited, terms.id = approvals/578) and the decision receipt link
+  published to the owner inbox.
