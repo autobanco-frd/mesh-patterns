@@ -1,6 +1,6 @@
-# Frantic bounty #142 — MAP approval loop report
+# MAP approval loop — field report
 
-**Task:** Approve or decline an agent's held campaign after checking its MAP description.
+An agent asked Nitrosend to send a campaign; Safe Mode held it and emailed the owner a MAP (Mail Action Protocol) description. This report documents one full approve loop, checked with the published checker package.
 **Account:** Nitrosend account for `info@mesh-01.com` (account_id 13832), brand sid `7a3d023ef09df8a38a538213`, sender `hello@mesh01.nitrosend.net`.
 
 ## What ran
